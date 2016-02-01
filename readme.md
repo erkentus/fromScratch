@@ -203,9 +203,24 @@ curl simple-python-server.marathon.mesos:8000
 
 3. Enable docker on nodes where slave is active (all nodes in our case)
 
-These steps to be repeated on every slave instance (including `masterslave` because there is a slave running too)
+**These steps to be repeated on every slave instance (including `masterslave` because there is a slave running too)**
+```sh
+$ sudo yum install -y device-mapper-event-libs docker
+$ sudo service docker start
+```
+Now let's try to launch a NodeJS app on one of the instances `interfaceslave`
+```sh
+#Install node js 
+$ sudo sh -c 'curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -'
+$ sudo yum -y install nodejs
+$ mkdir -p $HOME/nodeJs/test
+$ cd $HOME/nodeJs/test
+# just a basic set up
+$ npm init #starting script at index.js
+$ touch Dockerfile
+$ touch index.js
 
-
+```
 ##### Useful commands
 1. Check the status of service
 ```sh
